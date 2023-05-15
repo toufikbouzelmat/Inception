@@ -8,10 +8,11 @@ RUN apt-get update && \
     apt-get install -y nginx
 
 # Copier le fichier de configuration nginx
-COPY my_nginx.conf /etc
+# COPY my_nginx.conf /etc
 
 # Exposer le port 80
 EXPOSE 80
+
 
 # Lancer nginx au démarrage du conteneur
 CMD ["nginx", "-g", "daemon off;"]

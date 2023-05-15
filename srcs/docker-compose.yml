@@ -1,0 +1,37 @@
+version: '18'
+
+services:
+ nginx:
+   build: ./requirements/nginx/
+   image: nginx
+   depends_on:
+     -mariadb
+     -wordpress
+   restart: always
+   volumes:
+     ["./home/"]
+ mariadb:
+ build: ./requirements/mariadb/
+ image: mariadb
+ environement:
+  MARIADB_ROOT_PASSWORD: 1234
+  MARIADB_DATABASE: wp_db
+  MARIADB_USER: wp_user
+  MARIADB_PASSWORD: 1234
+ restart: always
+ volumes:
+  -mariadb: /home/
+ wordpress:
+   build: ./requirements/wordpress/
+   depends_on: my_mariadb
+   image: wordpress
+   restart: always
+   environement:
+     WORDPRESS_DB_HOST:my_mariadb: 3306
+     WORDPRESS_DB_USER: wp_user
+     WORDPRESS_DB_PASS: 1234
+     WORDPRESS_DB_NAME: wp_db
+   volumes:
+     ["./var/www/html/"]
+
+
