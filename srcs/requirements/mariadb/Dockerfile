@@ -1,6 +1,7 @@
-FROM Debian:buster
+FROM debian:buster
 
-Run apt-get -y update && apt-get upgrade -y && apt-get -y install mariadb
+RUN apt-get update && apt-get upgrade -y && apt-get install -y mariadb-server
+
 
 # COPY my_mariadb.conf /etc
 
