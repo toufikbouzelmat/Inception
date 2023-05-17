@@ -6,7 +6,14 @@
 #    By: tbouzalm <tbouzalm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/14 00:24:38 by tbouzalm          #+#    #+#              #
-#    Updated: 2023/05/14 00:24:53 by tbouzalm         ###   ########.fr        #
+#    Updated: 2023/05/17 06:14:10 by tbouzalm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+
+up:
+	cd srcs && docker-compose up --build
+
+down:
+	cd srcs && docker-compose down
 
