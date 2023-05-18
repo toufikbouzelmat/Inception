@@ -8,8 +8,11 @@ RUN apt-get update && \
     apt-get install -y nginx \
     && apt-get -y install openssl 
 
+COPY index.html var/www/html/
+RUN chmod 777 var/www/html/index.html
+
 # Copier le fichier de configuration nginx
-COPY default.conf /etc/nginx/sites-available/default2
+COPY default.conf /etc/nginx/sites-available/default
 COPY tools/script.sh etc/nginx
 
 RUN chmod +x etc/nginx/script.sh
