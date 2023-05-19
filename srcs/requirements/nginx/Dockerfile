@@ -8,6 +8,7 @@ RUN apt-get update && \
     apt-get install -y nginx \
     && apt-get -y install openssl 
 
+# juste faire un test pour avaoir mon nginx avec mon fichier index
 COPY index.html var/www/html/
 RUN chmod 777 var/www/html/index.html
 
