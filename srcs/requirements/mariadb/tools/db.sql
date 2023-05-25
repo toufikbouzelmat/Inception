@@ -1,6 +1,6 @@
-CREATE DATABASE wordpress;
-CREATE USER 'tf'@'%' IDENTIFIED BY '123123';
-GRANT ALL PRIVILEGES ON wordpress.* TO 'tf'@'%';
+CREATE DATABASE wp_db;
+CREATE USER 'wp_user'@'%' IDENTIFIED BY '1949';
+GRANT ALL PRIVILEGES ON wp_db.* TO 'wp_user'@'%';
 FLUSH PRIVILEGES;
 
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'root123123';
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root1949';

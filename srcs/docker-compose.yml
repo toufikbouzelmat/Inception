@@ -2,44 +2,44 @@
 version: '3'
 
 services:
-  # nginx:
-  #   build: ./requirements/nginx/
-  #   image: nginx
-  #   container_name: nginx
-  #   # depends_on:
-  #   #   - mariadb
-  #   #   - wordpress
-  #   restart: always
-  #   ports:
-  #     - "443:443"
-  #   # volumes:
-  #   #   - ./home/:/usr/share/nginx/html/
-  #   networks:
-  #     - mynetwork
+  nginx:
+    build: ./requirements/nginx/
+    image: nginx
+    container_name: nginx
+    depends_on:
+      - mariadb
+      - wordpress
+    restart: always
+    ports:
+      - "443:443"
+    volumes:
+      - ./home/:/usr/share/nginx/html/
+    networks:
+      - mynetwork
 
-  # mariadb:
-  #   build: ./requirements/mariadb/
-  #   image: mariadb
-  #   container_name: mariadb
-  #   env_file: 
-  #     - .env
-  #   # restart: always
-  #   ports:
-  #     - "3306:3306"
-  #   volumes:
-  #     - DB:/var/lib/mysql
-  #   networks:
-  #     - mynetwork
+  mariadb:
+    build: ./requirements/mariadb/
+    image: mariadb
+    container_name: mariadb
+    env_file: 
+      - .env
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - DB:/var/lib/mysql
+    networks:
+      - mynetwork
 
   wordpress:
     build: ./requirements/wordpress/
-    # depends_on:
-    #   - mariadb
+    depends_on:
+      - mariadb
     image: wordpress
     container_name: wordpress
-    ports:
-      - "9000:9000"
-    # restart: always
+    # ports:
+    #   - "9000:9000"
+    restart: always
     environment:
       - .env
     volumes:
@@ -48,7 +48,7 @@ services:
       - mynetwork
 
 volumes:
-  # DB:
+  DB:
   wp_data:
 
 networks:

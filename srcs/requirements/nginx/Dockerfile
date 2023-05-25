@@ -9,11 +9,11 @@ RUN apt-get update && \
     && apt-get -y install openssl 
 
 # juste faire un test pour avaoir mon nginx avec mon fichier index
-COPY index.html var/www/html/
-RUN chmod 777 var/www/html/index.html
+# COPY index.html var/www/html/
+# RUN chmod 777 var/www/html/index.html
 
 # Copier le fichier de configuration nginx
-COPY default.conf /etc/nginx/sites-available/default
+COPY conf/default.conf /etc/nginx/sites-available/default
 COPY tools/script.sh etc/nginx
 
 RUN chmod +x etc/nginx/script.sh
