@@ -23,7 +23,7 @@ define( 'DB_NAME', 'wp_db' );
 /** MySQL database username */
 define( 'DB_USER', 'wp_user' );
 /** MySQL database password */
-define( 'DB_PASSWORD', '1234' );
+define( 'DB_PASSWORD', '1949' );
 /** MySQL hostname */
 define( 'DB_HOST', 'mariadb' );
 /** Database Charset to use in creating database tables. */
