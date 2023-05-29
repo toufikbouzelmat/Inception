@@ -11,28 +11,18 @@
 # **************************************************************************** #
 
 
-up:
-	cd srcs && docker-compose up --build -d 
+all: up
 
-fclean:
+up:
 	cd srcs && docker-compose build --no-cache && docker-compose up
 
-# all : up
-
-# up : 
-# 	@docker-compose -f ./srcs/docker-compose.yml up -d
-
-# down : 
-# 	@docker-compose -f ./srcs/docker-compose.yml down
-
-# stop : 
-# 	@docker-compose -f ./srcs/docker-compose.yml stop
-
-# start : 
-# 	@docker-compose -f ./srcs/docker-compose.yml start
-
-# status : 
-# 	@docker ps
-
-# fclean :
-# 	@docker system prune --all --force
+down:
+	cd srcs && docker-compose down
+stop:
+	cd srcs && docker-compose stop
+start:
+	cd srcs && docker-compose start
+fclean:
+	cd srcs && docker-compose down --rmi all
+	docker volume prune --force
+	docker network prune --force
