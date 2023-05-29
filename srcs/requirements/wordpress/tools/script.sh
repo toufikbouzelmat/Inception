@@ -1,9 +1,7 @@
 #!/bin/bash
 
-mkdir "html"
-cd html
-mkdir "wordpress";
-cd "wordpress";
+cd "/var/www/"
+mkdir -p "html/wordpress"
 chmod -R 775 /var/www/html/wordpress;
 chown -R www-data /var/www/html/wordpress;
 mkdir -p /run/php/;

@@ -13,7 +13,7 @@ services:
     ports:
       - "443:443"
     volumes:
-      - wp_data:/Users/tbouzalm/Desktop
+      - wp_data:/var/www/html/wordpress
     networks:
       - mynetwork
 
@@ -43,14 +43,13 @@ services:
     environment:
       - .env
     volumes:
-      - wp_data:/Users/tbouzalm/Desktop
+      - wp_data:/var/www/html/wordpress
     networks:
       - mynetwork
 
 volumes:
   DB:
   wp_data:
-  ngx_v:
 
 networks:
   mynetwork:
