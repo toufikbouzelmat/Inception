@@ -1,11 +1,12 @@
 #!/bin/bash
 
+
 cd "/var/www/"
 mkdir -p "html/wordpress"
 chmod -R 775 /var/www/html/wordpress;
 chown -R www-data /var/www/html/wordpress;
 mkdir -p /run/php/;
-touch /run/php/php7.3-fpm;
+# touch /run/php/php7.3-fpm;
 mv /var/www/wp-config.php /var/www/html/wordpress/;
 
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar;
@@ -26,5 +27,3 @@ echo "Wordpress: set up!"
 echo "Wordpress started on :9000"
 /usr/sbin/php-fpm7.3 -F
 
-
-# sleep 10000
