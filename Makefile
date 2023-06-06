@@ -14,15 +14,22 @@
 all: up
 
 up:
-	cd srcs && docker-compose build --no-cache && docker-compose up
-
+	cd srcs && docker compose build --no-cache && docker compose up
+	@mkdir -p /home/${USER}/data/wordpress
+	@mkdir -p /home/${USER}/data/mariadb
 down:
-	cd srcs && docker-compose down
+	cd srcs && docker compose down
+	@docker rmi -f $$(docker images -qa);\
+	docker volume rm $$(docker volume ls -q);\
+	docker system prune -a --force
+	sudo rm -Rf /home/${USER}/data/wordpress
+	sudo rm -Rf /home/${USER}/data/mariadb
+	mkdir /home/${USER}/data/wordpress
+	mkdir /home/${USER}/data/mariadb
 stop:
-	cd srcs && docker-compose stop
+	cd srcs && docker compose stop
 start:
-	cd srcs && docker-compose start
-fclean:
-	cd srcs && docker-compose down --rmi all
+	cd srcs && docker compose start
+fclean: down
 	docker volume prune --force
 	docker network prune --force

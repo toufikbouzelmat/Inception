@@ -9,4 +9,4 @@ COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/
 COPY ./tools/script.sh /var/www/
 COPY ./tools/wp-config.php /var/www/
 
-CMD ["bash", "/var/www/script.sh"]
+CMD bash /var/www/script.sh
