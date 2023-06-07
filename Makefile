@@ -22,8 +22,8 @@ down:
 	@docker rmi -f $$(docker images -qa);\
 	docker volume rm $$(docker volume ls -q);\
 	docker system prune -a --force
-	sudo rm -Rf /home/${USER}/data/wordpress
-	sudo rm -Rf /home/${USER}/data/mariadb
+	rm -Rf /home/${USER}/data/wordpress
+	rm -Rf /home/${USER}/data/mariadb
 	mkdir /home/${USER}/data/wordpress
 	mkdir /home/${USER}/data/mariadb
 stop:

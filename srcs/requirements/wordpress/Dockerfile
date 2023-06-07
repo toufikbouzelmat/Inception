@@ -8,5 +8,7 @@ EXPOSE 9000
 COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/
 COPY ./tools/script.sh /var/www/
 COPY ./tools/wp-config.php /var/www/
+RUN chmod +x /var/www/script.sh
 
-CMD bash /var/www/script.sh
+CMD /var/www/script.sh
+

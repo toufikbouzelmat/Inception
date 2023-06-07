@@ -1,10 +1,6 @@
 #!/bin/bash
 
 
-if [ -f .env ]; then
-    export $(cat .env | xargs)
-fi
-
 cd "/var/www/"
 mkdir -p "html/wordpress"
 chmod -R 775 /var/www/html/wordpress;
