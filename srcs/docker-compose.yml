@@ -31,15 +31,15 @@ services:
     # networks:
     #   - mynetwork
 
-  # wordpress:
-  #   build: ./requirements/wordpress/
-  #   depends_on:
-  #     - mariadb
-  #   image: wordpress
-  #   container_name: wordpress
-  #   restart: always
-  #   env_file:
-  #     - .env
+  wordpress:
+    build: ./requirements/wordpress/
+    depends_on:
+      - mariadb
+    image: wordpress
+    container_name: wordpress
+    restart: always
+    env_file:
+      - .env
   #   volumes:
   #     - wp_data:/var/www/html/wordpress
   #   networks:

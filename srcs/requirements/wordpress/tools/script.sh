@@ -14,6 +14,9 @@ chmod +x wp-cli.phar;
 mv wp-cli.phar /usr/local/bin/wp;
 cd /var/www/html/wordpress;
 
+sed -i -r "s/data/$MYSQL_DATABASE/1"   wp-config.php
+sed -i -r "s/user/$MYSQL_USER/1"   wp-config.php
+sed -i -r "s/mdp/$MYSQL_PASSWORD/1"   wp-config.php
 
 wp core download --allow-root;
 
