@@ -2,6 +2,15 @@
 
 
 cd "/var/www/"
+
+
+sed -i -r "s/database_name_here/${MYSQL_DATABASE}/g"   wp-config.php
+sed -i -r "s/username_here/${MYSQL_USER}/g"   wp-config.php
+sed -i -r "s/password_here/${MYSQL_PASSWORD}/g"   wp-config.php
+sed -i -r "s/localhost/${WORDPRESS_DB_HOST}/g"   wp-config.php
+
+
+
 mkdir -p "html/wordpress"
 chmod -R 775 /var/www/html/wordpress;
 chown -R www-data /var/www/html/wordpress;
@@ -14,13 +23,11 @@ chmod +x wp-cli.phar;
 mv wp-cli.phar /usr/local/bin/wp;
 cd /var/www/html/wordpress;
 
-sed -i -r "s/data/$MYSQL_DATABASE/1"   wp-config.php
-sed -i -r "s/user/$MYSQL_USER/1"   wp-config.php
-sed -i -r "s/mdp/$MYSQL_PASSWORD/1"   wp-config.php
 
 wp core download --allow-root;
 
-wp core install --allow-root --url=${DOMAINE_NAME} --title=${WORDPRESS_DB_NAME} --admin_user=${MYSQL_USER} --admin_password=${MYSQL_PASSWORD} --admin_email=${WORDPRESS_DB_USER} --skip-email;
+
+wp core install --allow-root --url=${DOMAINE_NAME} --title="website" --admin_user=${MYSQL_USER} --admin_password=${MYSQL_PASSWORD} --admin_email=${WORDPRESS_DB_EMAIL} --skip-email;
 
 
 

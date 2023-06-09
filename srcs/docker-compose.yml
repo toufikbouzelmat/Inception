@@ -2,20 +2,20 @@
 version: '3'
 
 services:
-  # nginx:
-  #   build: ./requirements/nginx/
-  #   image: nginx
-  #   container_name: nginx
-  #   depends_on:
-  #     - mariadb
-  #     - wordpress
-  #   restart: always
-  #   ports:
-  #     - "443:443"
-  #   volumes:
-  #     - wp_data:/var/www/html/wordpress
-  #   networks:
-  #     - mynetwork
+  nginx:
+    build: ./requirements/nginx/
+    image: nginx
+    container_name: nginx
+    depends_on:
+      - mariadb
+      - wordpress
+    restart: always
+    ports:
+      - "443:443"
+    volumes:
+      - wp_data:/var/www/html/wordpress
+    networks:
+      - mynetwork
   
   mariadb:
     build: ./requirements/mariadb/
@@ -26,10 +26,10 @@ services:
     restart: always
     ports:
       - "3306:3306"
-    # volumes:
-    #   - DB:/var/lib/mysql
-    # networks:
-    #   - mynetwork
+    volumes:
+      - DB:/var/lib/mysql
+    networks:
+      - mynetwork
 
   wordpress:
     build: ./requirements/wordpress/
@@ -40,27 +40,35 @@ services:
     restart: always
     env_file:
       - .env
-  #   volumes:
-  #     - wp_data:/var/www/html/wordpress
-  #   networks:
-  #     - mynetwork
+    volumes:
+      - wp_data:/var/www/html/wordpress
+    networks:
+      - mynetwork
+    
+  site:
+    build: ./requirements/bonus/web_statique/
+    container_name: web_statique
+    hostname: localhost
+    ports:
+      - "446:446"
+    restart: always
 
 
-# volumes:
-#   DB:
-#     name: mariadb
-#     driver_opts:
-#       o: bind
-#       type: none
-#       device: /home/tbouzalm/data/mariadb
-#   wp_data:
-#     name: wordpress
-#     driver_opts:
-#       o: bind
-#       type: none
-#       device: /home/tbouzalm/data/wordpress
+volumes:
+  DB:
+    name: mariadb
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/tbouzalm/data/mariadb
+  wp_data:
+    name: wordpress
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/tbouzalm/data/wordpress
 
-# networks:
-#   mynetwork:
-#     driver : bridge
-#     name: mynetwork
+networks:
+  mynetwork:
+    driver : bridge
+    name: mynetwork
