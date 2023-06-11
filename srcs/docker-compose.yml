@@ -50,7 +50,7 @@ services:
     container_name: web_statique
     hostname: localhost
     ports:
-      - "446:446"
+      - "444:444"
     restart: always
 
 

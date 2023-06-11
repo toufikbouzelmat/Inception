@@ -2,8 +2,6 @@
 
 service mysql start;
 
-sleep 5;
-
 mysql -e "CREATE DATABASE \`${MYSQL_DATABASE}\`;"
 mysql -e "CREATE USER \`${MYSQL_USER}\`@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';"
 mysql -e "GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO \`${MYSQL_USER}\`@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';"

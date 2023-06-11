@@ -17,7 +17,7 @@ chown -R www-data /var/www/html/wordpress;
 mkdir -p /run/php/;
 
 cp /var/www/wp-config.php /var/www/html/wordpress/;
-chmod 644 /var/www/html/wordpress/wp-config.php;
+chmod 777 /var/www/html/wordpress/wp-config.php;
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar;
 chmod +x wp-cli.phar;
 mv wp-cli.phar /usr/local/bin/wp;
