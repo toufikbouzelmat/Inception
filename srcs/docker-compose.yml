@@ -48,10 +48,23 @@ services:
   site:
     build: ./requirements/bonus/web_statique/
     container_name: web_statique
+    image: web_statique
     hostname: localhost
     ports:
       - "444:444"
     restart: always
+  
+  adminer:
+    build: ./requirements/bonus/adminer
+    container_name: adminer
+    image: adminer
+    restart: always
+    volumes:
+      - DB:/var/lib/mysql
+    ports:
+      - 9090:9090
+    networks:
+      - mynetwork
 
 
 volumes:
