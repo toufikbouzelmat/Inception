@@ -53,33 +53,6 @@ services:
     ports:
       - "444:444"
     restart: always
-  
-  adminer:
-    build: ./requirements/bonus/adminer
-    container_name: adminer
-    image: adminer
-    volumes:
-      - DB:/var/lib/mysql
-    restart: always
-    ports:
-      - 9090:9090
-    networks:
-      - mynetwork
-
-  cadvisor:
-    build: ./requirements/bonus/cadvisor
-    container_name: cadvisor
-    image: cadvisor
-    networks:
-      - mynetwork
-    ports:
-      - "6500:6500"
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:rw
-      - /sys:/sys:ro 
-      - /var/lib/docker/:/var/lib/docker:ro 
-
 
 volumes:
   DB:
